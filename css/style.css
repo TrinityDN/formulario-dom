@@ -41,6 +41,7 @@ h1{
     margin-top: 1%;
     background-color: #ebebeb;
     border-radius: 10px;
+    box-shadow: 2px 4px 6px #1a191936;
 }
 
 label{
@@ -159,4 +160,23 @@ input::placeholder{
 
 .swal-button{
     background-color: #252424;
+}
+
+#enviar{
+    box-shadow: 2px 4px 6px #1a191936;
+}
+
+select{
+    font-family: 'Source Sans Pro', sans-serif;
+    margin-top: 2%;
+    width: 210px;
+    font-size: 60%;
+    margin-bottom: 10%;
+    border: none;
+    background-color: transparent;
+    outline: 0;
+}
+
+option{
+    font-family: 'Source Sans Pro', sans-serif;
 }
