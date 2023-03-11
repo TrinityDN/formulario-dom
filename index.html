@@ -42,32 +42,15 @@
                 placeholder="Digite aqui..."
               />
               <div id="sexo">
-                <label id="genero" for="sexo">Gênero:</label>
+                <label for="sexo">Gênero:</label>
                 <div id="alinhar">
-                  <input
-                    class="radio"
-                    name="sexo"
-                    type="radio"
-                    id="sexo"
-                    value="fem"
-                  />
-                  <label class="txt-label" for="sexo">Fem</label>
-                  <input
-                    class="radio"
-                    name="sexo"
-                    type="radio"
-                    id="sexo"
-                    value="masc"
-                  />
-                  <label class="txt-label" for="sexo">Masc</label>
-                  <input
-                    class="radio"
-                    name="sexo"
-                    type="radio"
-                    id="sexo"
-                    value="other"
-                  />
-                  <label class="txt-label" for="sexo">Outro</label>
+                  <select name="sexo" id="genero">
+                    <option value="">Nos informe o seu gênero</option>
+                      <option value="fem">Feminino</option>
+                      <option value="masc">Masculino</option>
+                      <option value="outro">Outro</option>
+                  </select>
+                 
                 </div>
               </div>
               <button id="enviar" type="submit">ENVIAR</button>
@@ -76,12 +59,14 @@
         </div>
       </main>
     </div>
+    
     <footer>
       <h3 id="darkModeText"></h3>
       <button id="btn-night" onclick="mode()">
         <img id="day" src="img/day-att.png" alt="" />
       </button>
     </footer>
+
     <script>
       //Função que unifica os dois modos verificando se é verdadeiro ou falso a afirmação, através do botão
       function mode() {
@@ -106,6 +91,7 @@
         document.getElementById("modoclaro").innerHTML =
           '<img src=\'img/lua2.png\' width="100px" height="100px">';
         document.getElementById("formulario").style.backgroundColor = "white";
+        document.getElementById("formulario").style.boxShadow = "2px 2px 6px #ffffff60";
         document.getElementById("btn-night").innerHTML =
           '<img src=\'img/night-att.png\' width="320px" height="130px">';
         document.getElementById("texto").style.color = "white";
@@ -120,9 +106,10 @@
         document.getElementById("modoclaro").innerHTML =
           '<img src=\'img/sol.png\' width="100px" height="100px">';
         document.getElementById("formulario").style.backgroundColor = "#ebebeb";
+        document.getElementById("formulario").style.boxShadow = "box-shadow: 2px 4px 6px #1a191936";
         document.getElementById("btn-night").innerHTML =
           '<img src=\'img/day-att.png\' width="320px" height="130px">';
-        document.getElementById("texto").style.color = "black";
+        document.getElementById("texto").style.color = "#0b0b0b";
         document.getElementById("enviar").style.backgroundColor = "#eca31b";
       }
 
@@ -131,7 +118,7 @@
       const nameInput = document.querySelector("#name");
       const lastNameInput = document.querySelector("#last-name");
       const yearsInput = document.querySelector("#years");
-      const sexoInput = document.querySelector("#sexo");
+      const genderSelect = document.querySelector("#genero");
 
 
       //Verificando se os inputs estão validos
@@ -159,12 +146,15 @@
           return;
         }
 
-        if(sexoInput.value === "") {
-          swal("É necessário preencher esse campo!");
+        //Verifica se alguma das opções estão preenchidas
+        if(genderSelect.value === ""){
+          swal("É necessário selecionar esse campo!");
           return;
         }
 
+
         //Envio do formulário
+        alert("Dados enviados com sucesso!");
         form.submit();
       });
     </script>
