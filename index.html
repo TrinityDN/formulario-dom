@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>Formulário Temático</title>
+  </head>
+  <body id="bodyy">
+    <div id="alinhaar">
+      <header>
+        <h1 id="texto">Formulário</h1>
+        <div id="modoclaro">
+          <img id="sol" src="img/sol.png" alt="" />
+        </div>
+      </header>
+      <main>
+        <div id="formulario" onclick="validaRadio()">
+          <div id="itens">
+            <form action="" name="form1" id="form" method="post">
+              <label for="name">Nome:</label>
+              <input
+                class="ipnt"
+                type="text"
+                id="name"
+                placeholder="Digite aqui..."
+              />
+              <label for="last-name">Sobrenome:</label>
+              <input
+                class="ipnt"
+                type="text"
+                id="last-name"
+                placeholder="Digite aqui..."
+              />
+              <label for="years">Idade:</label>
+              <input
+                class="ipnt"
+                type="text"
+                id="years"
+                placeholder="Digite aqui..."
+              />
+              <div id="sexo">
+                <label id="genero" for="sexo">Gênero:</label>
+                <div id="alinhar">
+                  <input
+                    class="radio"
+                    name="sexo"
+                    type="radio"
+                    id="sexo"
+                    value="fem"
+                  />
+                  <label class="txt-label" for="sexo">Fem</label>
+                  <input
+                    class="radio"
+                    name="sexo"
+                    type="radio"
+                    id="sexo"
+                    value="masc"
+                  />
+                  <label class="txt-label" for="sexo">Masc</label>
+                  <input
+                    class="radio"
+                    name="sexo"
+                    type="radio"
+                    id="sexo"
+                    value="other"
+                  />
+                  <label class="txt-label" for="sexo">Outro</label>
+                </div>
+              </div>
+              <button id="enviar" type="submit">ENVIAR</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer>
+      <h3 id="darkModeText"></h3>
+      <button id="btn-night" onclick="mode()">
+        <img id="day" src="img/day-att.png" alt="" />
+      </button>
+    </footer>
+    <script>
+      //Função que unifica os dois modos verificando se é verdadeiro ou falso a afirmação, através do botão
+      function mode() {
+        console.log(document.getElementById("bodyy").style.backgroundColor);
+        if (
+          document.getElementById("bodyy").style.backgroundColor ==
+            "rgb(252, 249, 249)" ||
+          document.getElementById("bodyy").style.backgroundColor == ""
+        ) {
+          darkMode();
+        } else {
+          lightMode();
+        }
+      }
+
+      //Função para definir o modo escuro e setar a mudança nos elementos em estilização CSS
+      function darkMode() {
+        var element = document.body;
+        var content = document.getElementById("darkModeText");
+
+        document.getElementById("bodyy").style.backgroundColor = "#36404d";
+        document.getElementById("modoclaro").innerHTML =
+          '<img src=\'img/lua2.png\' width="100px" height="100px">';
+        document.getElementById("formulario").style.backgroundColor = "white";
+        document.getElementById("btn-night").innerHTML =
+          '<img src=\'img/night-att.png\' width="320px" height="130px">';
+        document.getElementById("texto").style.color = "white";
+        document.getElementById("enviar").style.backgroundColor = " #c48ae6";
+      }
+
+      //Função para definir o modo claro default e setar a mudança nos elementos em estilização CSS
+      function lightMode() {
+        var element = document.body;
+        var content = document.getElementById("darkModeText");
+        document.getElementById("bodyy").style.backgroundColor = "#fcf9f9";
+        document.getElementById("modoclaro").innerHTML =
+          '<img src=\'img/sol.png\' width="100px" height="100px">';
+        document.getElementById("formulario").style.backgroundColor = "#ebebeb";
+        document.getElementById("btn-night").innerHTML =
+          '<img src=\'img/day-att.png\' width="320px" height="130px">';
+        document.getElementById("texto").style.color = "black";
+        document.getElementById("enviar").style.backgroundColor = "#eca31b";
+      }
+
+      //Criando a função do form e criando as variáveis para validação
+      const form = document.querySelector("#form");
+      const nameInput = document.querySelector("#name");
+      const lastNameInput = document.querySelector("#last-name");
+      const yearsInput = document.querySelector("#years");
+      const sexoInput = document.querySelector("#sexo");
+
+
+      //Verificando se os inputs estão validos
+      console.log(form, nameInput, lastNameInput, yearsInput);
+
+      //Criando o evento de envio de formulário
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        //Criando condições para preenchimento de campo. Se vazio, não enviar.
+        //Verifica se o nome está vazio
+        if (nameInput.value === "") {
+          swal("É necessário preencher esse campo!");
+          return;
+        }
+
+        //Verifica se o sobrenome está vazio
+        if (lastNameInput.value === "") {
+          swal("É necessário preencher esse campo!");
+          return;
+        }
+
+        if (yearsInput.value === "") {
+          swal("É necessário preencher esse campo!");
+          return;
+        }
+
+        if(sexoInput.value === "") {
+          swal("É necessário preencher esse campo!");
+          return;
+        }
+
+        //Envio do formulário
+        form.submit();
+      });
+    </script>
+  </body>
+</html>
